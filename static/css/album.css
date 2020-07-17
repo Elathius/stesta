@@ -1,0 +1,110 @@
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+
+body{
+background-color:#212228;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.modal-title{
+  font-family: 'Poppins';
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.iteme{
+  font-family: 'Poppins';
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 3%;
+  text-decoration: none;
+}
+
+.card{
+  background-color: #212228;
+}
+
+.card-title{
+  color: White;
+}
+
+.modal-content{
+  background-color: #212121;
+}
+
+.modal-title{
+  color: white;
+}
+
+.progress-bar-striped{
+  background-color: #39ff14;
+}
+
+.progress-bar{
+  color: black;
+}
+
+.progress {
+  background-color: #292b32;
+}
+
+.floating-btn{
+  width: 60px ;
+  height: 60px;
+  background: #39ff14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 40px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  position:fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+}
+
+.floating-btn:hover{
+  text-decoration: none;
+}

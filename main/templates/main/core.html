@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  
+<!-- Mirrored from getbootstrap.com/docs/4.0/examples/album/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Jul 2020 15:02:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <title>Dashboard</title>
+
+    <link rel="canonical" href="index.html">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+
+    <!-- Custom styles for this template -->
+    {% load static %}
+    <link href="{% static 'css/album.css' %}" rel="stylesheet"> <!---static js/filename.js-->
+    <style>
+      a{
+        text-decoration: none;
+      }
+      .usermenu{
+        text-decoration: none;
+        color: white
+      }
+      .usermenu:hover{
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-dark bg-dark" style="height: 15vh !important; background-color: #212228 !important ;">
+        <ul class="mr-auto">
+          <li class="nav-item" >
+            <a href="#" >
+              <img src="{% static 'img/gradientlogo.png' %}" height="60" width="80" alt="..." class="rounded-circle">
+            </a>
+          </li>
+        </ul>
+
+        <ul class="ml-auto" style="margin-right: 5% !important;">
+          <li class="nav-item" >
+            <a href="" data-toggle="modal" data-target="#exampleModal">
+              <p class="usermenu">Hello, {{request.user.username}} &#8659; </p>
+            </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document" >
+                <div class="modal-content" style="background-color: #212228;">
+                  <!--  -->
+                  <div class="modal-body">
+                    {% if request.user.is_authenticated %}
+                    <h2 class="modal-title" id="exampleModalLabel">Hey {{request.user.username}}</h2>
+                    <a href="" class="iteme"><h5>ITEM 1</h5></a>
+                    <a href="" class="iteme"><h5>ITEM 2</h5></a>
+                    <a href="" class="iteme"><h5>ITEM 3</h5></a>
+                    <a href="logout" class="iteme"><h5>logout</h5></a> <!--put logouthere-->
+                    {% endif %}
+                  </div>
+                  <!--  -->
+                </div>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main" >
+      <div class="album py-5 bg-light" style="background-color: #292b32 !important ; ">
+        <div class="container">
+          <a href="#" class="material-icons floating-btn" data-toggle="modal" data-target="#example">add</a>
+          <!--#################### ADD CARD MODAL ####################-->
+          <!-- Modal -->
+          <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" >
+              <div class="modal-content" style="background-color: #212228;">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">Add Task</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <!--#################### ADD CARD MENU ####################-->
+                <div class="modal-body">
+                  <form method="POST" >
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                      <label for="TaskName">Task Title</label>
+                      <input type="name" name="task_name" class="form-control" id="id_task_name"  placeholder="Enter Task">
+                    </div>
+                    <div class="form-group">
+                      <label for="deadline">Task Deadline</label>
+                      <input type="date" name="task_deadline_date" class="form-control" id="id_task_deadline_date" placeholder="Enter Deadline  Date">
+                    </div>
+                    <div class="form-group">
+                      <label for="deadline">Task Deadline</label>
+                      <input type="time" step="1" value="11:59:59" name="task_deadline_time" class="form-control" id="id_task_deadline_time" placeholder="Enter Deadline Time">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+                <!-- <div class="modal-footer">-->
+              </div>
+            </div>
+          </div>
+          <!--#################### CARD LOOP ####################-->
+          <div class="row">
+            {% for card in cards %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h5 class="card-title">{{card.task_name}}</h5>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{card.task_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{card.task_progress}}%;">{{card.task_progress}}%</div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group" style="margin-top: 5% !important ;">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#thing">View</button>
+                      <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                      <!--#################### SUBCARD Pop up ####################-->
+                      <div class="modal fade" id="thing" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="btn btn-danger" style="border-radius: 50%; width:30px; height:30px;"></button>
+                              <h5 class="modal-title text-center" id="exampleModalLongTitle" style="margin-left: 30%; margin-right:26%;">Modal title</h5>
+                              <medium class="text-muted">2 Days left</medium>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body" style="align-items: center; text-align: center; ">
+                              <label for="addtask" style="color: #39ff14;">Enter New Task</label><br>
+                              <input type="name" class="form-control-name" id="addtask">
+                            </div>
+                            <div class="modal-body">
+                              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-right: 35%; margin-left: 35%; ">
+                                View Sub Tasks
+                              </a><br><br>
+                              <div class="collapse" id="collapseExample">
+                                <div class="input-group mb-3">
+                                  <span type="text" class="form-control">Task</span>>
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                      <input type="checkbox" aria-label="Checkbox for following text input">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-body">
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
+                              </div> <br>
+                              <div class="slidecontainer">
+                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" style="width:100%;">
+                                <p style="color:#4CAF50;">Progress: <span id="demo"></span></p>
+                              </div> <br>
+                              
+                              <button type="button" class="btn btn-primary" style="margin-left: 40%; margin-right: 40%;">Submit</button><br><br>
+                              <a class="btn btn-danger" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 42%; margin-right:45%;">
+                                Dare
+                              </a><br><br>
+                              <div class="collapse" id="collapse">
+                                <button type="button" class="btn btn-danger" style="margin-left: 35%; margin-right:35%;">Delete this TASK!</button>
+                              </div>
+                            </div>
+                            <script>
+                              var slider = document.getElementById("myRange");
+                              var output = document.getElementById("demo");
+                              output.innerHTML = slider.value;
+                              
+                              slider.oninput = function() {
+                                output.innerHTML = this.value;
+                              }
+                              </script>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <small class="text-muted">{{card.task_deadline}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- <footer class="text-muted"> </footer> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="{% static "js/jquery-slim.min.js" %}"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js" integrity="sha512-O6R6IBONpEcZVYJAmSC+20vdsM07uFuGjFf0n/Zthm8sOFW+lAq/OK1WOL8vk93GBDxtMIy6ocbj6lduyeLuqQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+
+</html>
