@@ -33,6 +33,13 @@ def core(request):
             return redirect("/core")
    return render(request, 'main/core.html',{'cards':cards, 'form':form})
 
+def editcardsubmission(request):
+    return redirect('/core')
+
+
+def deletecardsubmission(request):
+    return redirect('/core')
+
 
 def register(request):
     if request.method == "POST":
@@ -54,7 +61,6 @@ def register(request):
 
 def logout_request(request):
     logout(request)
-    #messages.info(request, "Logged out successfully!")
     return redirect("/login")
 
 def login_request(request):
@@ -66,7 +72,6 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                #messages.info(request, f"You are now logged in as {username}")
                 return redirect('main:core')
             else:
                 messages.error(request, "Invalid username or password.")
@@ -83,7 +88,6 @@ def error404(request, exception, template_name='404.html'):
     response.status_code = 404
     print("sent 404")
     return response
-    #return render(request, 'error.html', context={"code":404,"error":"page not found"})
 
 def error500(request, template_name='500.html'):
     response = render(request, template_name)

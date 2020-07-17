@@ -26,5 +26,7 @@ urlpatterns = [
     path("login", views.login_request, name="login"),
     path("core", views.core, name="core"),
     path("getstarted", views.getstarted, name="getstarted"),
+    path("editcardsubmission", views.editcardsubmission, name="editcardsubmission"),
+    path("deletecardsubmission", views.deletecardsubmission, name="cdeletecardsubmission"),
     
 ]
