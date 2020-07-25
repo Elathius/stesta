@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Card
+from .models import Card, SubCard
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -25,5 +25,13 @@ class AddCardForm(ModelForm):
     class Meta:
         model = Card
         fields = ['task_name', 'task_deadline_date', 'task_deadline_time']
-        #widgets = { 'task_deadline_date' : DateInput()}
 
+class EditCardForm(ModelForm):
+    class Meta:
+        model = Card
+        fields = ['task_progress']
+
+class EditSubCardForm(ModelForm):
+    class Meta:
+        model = SubCard
+        fields = ['subtask_name','subtask_state']

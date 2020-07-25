@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Card
+from .models import Card, SubCard
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -21,6 +21,13 @@ def getstarted(request):
 @login_required(login_url="/login/")
 def core(request):
    cards = Card.objects.filter(task_owner=request.user.id)
+   cardids = Card.objects.values_list('taskid',flat=True).filter(task_owner=request.user.id)
+   subtasklist = SubCard.objects.all()
+   subtasks = []
+   for subs in subtasklist:
+       if subs.task_name.taskid in cardids:
+           subtasks.append(subs)
+      
    form = AddCardForm()
    if request.method == 'POST':
        print(request.POST)
@@ -31,13 +38,17 @@ def core(request):
             formtocommit.save()
             print("Saved entry")
             return redirect("/core")
-   return render(request, 'main/core.html',{'cards':cards, 'form':form})
+   return render(request, 'main/core.html',{'cards':cards, 'form':form, 'subtasks':subtasks})
 
 def editcardsubmission(request):
     return redirect('/core')
 
 
 def deletecardsubmission(request):
+    if 'deletecardsubmission' in request.POST:
+        carduuid=request.POST.get('carduuid')
+        print("found and deleting:"+carduuid)
+        Card.objects.filter(taskid=carduuid).delete()
     return redirect('/core')
 
 

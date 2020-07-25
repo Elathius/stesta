@@ -1,267 +1,251 @@
 <!doctype html>
 <html lang="en">
-  
-<!-- Mirrored from getbootstrap.com/docs/4.0/examples/album/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Jul 2020 15:02:59 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-<head>
-
-  
+  <head>
+    {% load static %}
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/736491929172180993/736498774431629363/resized_logocircle1.png">
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../assets/img/favicons/favicon.ico">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <title>Dashboard</title>
-
-    <link rel="canonical" href="index.html">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
-
-    <!-- Custom styles for this template -->
-    {% load static %}
-    <link href="{% static 'css/album.css' %}" rel="stylesheet"> <!---static js/filename.js-->
-    <style>
-      a{
-        text-decoration: none;
-      }
-      a:hover{
-        text-decoration: none;
-      }
-      .usermenu{
-        text-decoration: none;
-        color: white
-      }
-      .overlay {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #16171a;
-        overflow-x: hidden;
-        transition: 0.5s;
-      }
-
-      .overlay-content {
-        position: relative;
-        top: 25%;
-        width: 100%;
-        text-align: center;
-        margin-top: 30px;
-      }
-
-      .overlay a {
-        padding: 8px;
-        text-decoration: none;
-        font-size: 36px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
-
-      .overlay a:hover, .overlay a:focus {
-        color: #f1f1f1;
-      }
-
-      .overlay .closebtn {
-        position: absolute;
-        top: 20px;
-        right: 45px;
-        font-size: 60px;
-      }
-
-      @media screen and (max-height: 450px) {
-        .overlay a {font-size: 20px}
-        .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        right: 35px;
-        }
-      }
-    </style>
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <title>Steer | Dashboard</title>
+    
+    
   </head>
-
   <body>
-    <header>
-      <nav class="navbar navbar-dark bg-dark" style="height: 15vh !important; background-color: #212228 !important ;">
-        <ul class="mr-auto">
-          <li class="nav-item" >
-            <a href="/" >
-              <img src="{% static 'img/gradientlogo.png' %}" height="60" width="80" alt="..." class="rounded-circle">
-            </a>
-          </li>
-        </ul>
-        <!-- #################### MENU ##################### -->
-        <ul class="ml-auto" style="margin-right: 5% !important;">
-          <li class="nav-item" >
-            <a href="#">
-              <p class="usermenu" onclick="openNav()">&#9776; Hello, {{request.user.username | capfirst}}</p>
-            </a>
-            
-            <div id="myNav" class="overlay">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <div class="overlay-content">
-                <a href="#"><u>{{request.user.username | capfirst}}</u></a>
-                <a href="#">About</a>
-                <a href="#">Documentation</a>
-                <a href="#">Support</a>
-                <a href="logout">Logout</a>
-              </div>
-            </div>
 
-          </li>
-        </ul>
-      </nav>
-    </header>
+<!-- Top -->
+  <header>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="#"><u>Elathius</u></a>
+        <a href="#">Guide</a>
+        <a href="#">Support</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
 
-    <main role="main" >
-      <div class="album py-5 bg-light" style="background-color: #292b32 !important ; ">
-        <div class="container">
-          <a href="#" class="material-icons floating-btn" data-toggle="modal" data-target="#example">add</a>
-          <!--#################### ADD CARD MODAL ####################-->
-          <!-- Modal -->
-          <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document" >
-              <div class="modal-content" style="background-color: #212228;">
-                <div class="modal-header">
-                  <h2 class="modal-title" id="exampleModalLabel">Add Task</h2>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+      <div class="topnav">
+        <ul>
+          <li class="left"><a href="/"><img style="max-width: 75px;" src="https://cdn.discordapp.com/attachments/714130033957929012/734709351574667294/Untitled-2.png"></a></li>
+          <a href="#">
+          <li class="right"><span onclick="openNav()" >&#9776; Hello, Elathius</span></li>
+          </a>
+        </ul>
+
+      </div>
+
+      <div class="thematicspacing">
+        <hr>
+      </div>
+  </header>
+<!-- ########################### -->
+<!-- Main -->
+    <div class="taskspace" id="taskspace">
+
+      <div class="row" style="width: 90vw; margin-left: auto; margin-right: auto; margin-top: 10px;">
+        {% for card in cards %}
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 .col-xl-3" style="margin-top: 10px;">
+          <div class="card" style="background-color: black; border-radius: 0 !important; border: 1px solid #11998e;">
+    
+            <div class="card-body">
+              <h5 class="card-title">{{card.task_name}}</h5>
+              <div class="progress" style="border-radius: 0 !important; background-color: #e9ecef00 !important; border: 1px solid #11998e;">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{card.task_progress}}"
+                aria-valuemin="0" aria-valuemax="100" style="width:{{card.task_progress}}%; background-color:#11998e;">
+                {{card.task_progress}}%
                 </div>
-              <!--#################### ADD CARD MENU ####################-->
-                <div class="modal-body">
-                  <form method="POST" >
-                    {% csrf_token %}
-                    
-                    <div class="form-group">
-                      <label for="TaskName">Task Title</label>
-                      <input type="name" name="task_name" class="form-control" id="id_task_name"  placeholder="Enter Task">
-                    </div>
-                    <div class="form-group">
-                      <label for="deadline">Task Deadline</label>
-                      <input type="date" name="task_deadline_date" class="form-control" id="id_task_deadline_date" placeholder="Enter Deadline  Date">
-                    </div>
-                    <div class="form-group">
-                      <label for="deadline">Task Deadline</label>
-                      <input type="time" step="1" value="11:59:59" name="task_deadline_time" class="form-control" id="id_task_deadline_time" placeholder="Enter Deadline Time">
-                    </div>
-                    <button type="submit" name="addcardsubmission" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
-                <!-- <div class="modal-footer">-->
+              </div><br>
+              <div class="d-flex ">
+                <button class="button" type="button" onclick="openView('prefix{{card.taskid}}')">View</button>
+
+                <medium class="ml-auto p-2" style="border-bottom: 1px solid orange ;">- {{ card.task_time|timeuntil:card.task_time }}</medium>
               </div>
             </div>
           </div>
-          <!--#################### CARD LOOP ####################-->
-          <div class="row">
-            {% for card in cards %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                  <h5 class="card-title">{{card.task_name}}</h5>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{card.task_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{card.task_progress}}%;">{{card.task_progress}}%</div>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group" style="margin-top: 5% !important ;">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#thing">View</button>
-                      <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      <!--#################### SUBCARD Pop up ####################-->
-                      <!-- EDIT FORM START -->
-                      <form action="editcardsubmission">
-                      <div class="modal fade" id="thing" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="btn btn-danger" style="border-radius: 50%; width:30px; height:30px;"></button>
-                              <h5 class="modal-title text-center" id="exampleModalLongTitle" style="margin-left: 30%; margin-right:26%;">Modal title</h5>
-                              <medium class="text-muted">{{ card.task_time|timeuntil:card.task_time }} left</medium>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body" style="align-items: center; text-align: center; ">
-                              <label for="addtask" style="color: #39ff14;">Enter New Task</label><br>
-                              <input type="name" class="form-control-name" id="addtask">
-                            </div>
-                            <div class="modal-body">
-                              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-right: 35%; margin-left: 35%; ">
-                                View Sub Tasks
-                              </a>
-                              <br><br>
-                              <div class="collapse" id="collapseExample">
-                                <div class="input-group mb-3">
-                                  <span type="text" class="form-control">Task</span>>
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <input type="checkbox" aria-label="Checkbox for following text input">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-body">
-                              <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
-                              </div> 
-                              <br>
-                              <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" style="width:100%;">
-                                <p style="color:#4CAF50;">Progress: <span id="demo"></span></p>
-                              </div> 
-                              <br>
-                              
-                              <button type="submit" name="editcardsubmission" class="btn btn-primary" style="margin-left: 40%; margin-right: 40%;">Submit</button>
+        </div>
+        {% endfor %}
+        
 
-                            </form>
-                            <!-- EDIT FORM END -->
-                              <br><br>
-                              <a class="btn btn-danger" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 42%; margin-right:45%;">
-                                Delete
-                              </a>
-                              <br><br>
-                              <!-- DELETE FORM START -->
-                              <form action="deletecardsubmission">
-                                <div class="collapse" id="collapse">
-                                  <button type="submit" name="deletesubmission" class="btn btn-danger" style="margin-left: 35%; margin-right:35%;">Delete task</button>
-                                </div>
-                              </form>
-                              <!-- DELETE FORM END -->
-                            </div>
-                            <script>
-                              var slider = document.getElementById("myRange");
-                              var output = document.getElementById("demo");
-                              output.innerHTML = slider.value;
-                              
-                              slider.oninput = function() {
-                                output.innerHTML = this.value;
-                              }
-                              </script>
-                          </div>
-                        </div>
-                      </div>
+      </div>
+            
+        
+    </div>
 
-                    </div>
-                    <small class="text-muted">{{ card.task_time|timeuntil:card.task_time }}</small>
+    <div id="subcardslist">
+
+      {% for card in cards %}
+
+      <div id="prefix{{card.taskid}}" class="subcardoverlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeView(this.parentNode.id)">&times;</a>
+        <div class="subcard-overlay-content">
+          
+          <!-- Subcard overlay -->
+          <div class="addwrap centerFlex">
+            <!-- DOT | NAME | TIME -->
+            <div class="overlayheader" style="width:60vw; margin-top: 15vh;">
+              <div id="subcardheader" class="d-flex justify-content-around">
+                <span class="subcard_card_urgency_color" style="height:25px; width:25px; border-radius:50%; display: inline-block; background-color:blue;"></span>
+                <h3  class="justify-content-center subcard_card_title" style="margin-right:-35px;">{{card.task_name}}</h3> 
+                <h5 class="subcard_card_time_left">-16 mins</h5>
+              </div>
+            <br>
+            
+            <form action="#">
+              <!-- Add subtask | Checkbox -->
+                <br>
+                <input class="justify-content-start" type="text"  placeholder="Add Subtask" >
+              
+              <!-- Subtask section, on click to open, closed by default -->
+              <div>
+                <h4 class="d-flex justify-content-center">View subtasks</h4>
+                <br>
+                
+                <div class="collapse collapsiblelist d-flex justify-content-center" id="collapseExample">
+                  <!-- Load all subtasks of this specific card -->
+                  {% for sub_tasks in subtasks %}
+                  {% if sub_tasks.task_name.task_name == card.task_name %}
+                                  {% if sub_tasks.subtask_state == True %}
+                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" checked value="{{sub_tasks.subtask_name}}/{{card.taskid}}" /></label>
+                                  {% else %}
+                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" value="{{sub_tasks.subtask_name}}/{{card.taskid}}" /></label>
+                                  {% endif %}
+                                {% endif %}
+                  
+
+                  <!-- <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" value="{{sub_tasks.subtask_name}}/{{card.taskid}}" /></label> -->
+                  {% endfor %}
+                </div>
+                
+                  <!-- down arrow -->
+                  <a href="#!">
+                    <span data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+                      &#8964;
+                    </span>
+                  </a>
+                  <br>
+              </div>
+              <!-- Progress slider -->
+              <div class="slidecontainer justify-content-center" style="width: 50%; margin-right:auto; margin-left:auto;">
+                <div class="progress" style="border-radius: 0 !important; background-color: #e9ecef00 !important; border: 1px solid #11998e;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                  aria-valuemin="0" aria-valuemax="100" style="width:70%; background-color:#11998e; ">
+                    70%
                   </div>
                 </div>
+                <br>
+              </div> 
+              <!-- Tooltip -->
+              <div>
+                <h5><i class="fa fa-question-circle-o d-flex justify-content-center" aria-hidden="true"></i></h5>
               </div>
-            </div>
-            {% endfor %}
-            
+              <!-- Progress status e.g. 4/5 | 80% -->
+              <div>
+                <h5>4/5 | 80%</h5>
+                <br>
+              </div>
+              <!-- Submit -->
+              <input type="hidden"  name="carduuid" value="{{card.taskid}}">
+              <button type="submit" name="editcardsubmission" class="button">Commit</button>
+            </form>
+            <!-- Delete -->
+            <form action="deletecardsubmission" method="POST">
+              {% csrf_token %}
+              <input type="hidden"  name="carduuid" value="{{card.taskid}}">
+              <br>
+              <button type="button"  class="button" data-toggle="collapse" href="#confirmationcollapse" role="button" aria-expanded="false" aria-controls="confirmationcollapse" style="border: 1px solid red;" >Delete</button>
+              <br><br>
+              <button type="submit" name="deletecardsubmission" class="button collapse" id="confirmationcollapse" style="color:red;">Confirm</button>
+              <br><br><br>
+            </form>
           </div>
+            <!-- Subcard overlay END -->
+
+          
         </div>
       </div>
 
-    </main>
+    </div>
+      {% endfor %}
 
-    <!-- <footer class="text-muted"> </footer> -->
+
+  </div>
+
+<!-- ########################### -->
+<!-- Add card panel -->
+  <div id="Addpanel" class="addoverlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAdd()">&times;</a>
+    <div class="add-overlay-content">
+      <div class="addwrap centerFlex">
+        <form method="POST" >
+          {% csrf_token %}
+          <div class="">
+            <label for="TaskName">Task Title</label><br>
+            <input type="name" name="task_name" class="" id="id_task_name"  placeholder="Enter Task">
+          </div>
+          <div class="">
+            <label for="deadline">Deadline Date</label><br>
+            <input type="date" name="task_deadline_date" class="" id="id_task_deadline_date" placeholder="Enter Deadline  Date">
+          </div>
+          <div class="">
+            <label for="deadline">Deadline Time</label><br>
+            <input type="time" step="1" value="11:59:59" name="task_deadline_time" class="" id="id_task_deadline_time" placeholder="Enter Deadline Time">
+          </div>
+          <button type="submit" name="addcardsubmission" class="button">Add Task</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Floating Add button -->
+
+  <a href="#!" class="floatingbutton" onclick="openAdd()">
+    <i class="fa fa-plus" style="margin-top: 15px;"></i>
+  </a>
+<!-- ######################### -->
+<!-- Footer -->
+    <div class="page-footer footer">
+      <hr>
+
+      <div class="container">
+        <div class="row">
+            <!--Column1--><div class="col-sm-4"><br><br>&#169; Stesta</div>
+            <!--Column2--><div class="col-sm-4">
+                            <br>
+                            <a href="">
+                              <img style="max-width: 100px;" src="https://cdn.discordapp.com/attachments/714130033957929012/734709351574667294/Untitled-2.png">
+                            </a>
+                            <br>
+                            <p><br><br>by<br><br>Aditya Pathak &<br> Arham Khaishagi</p>
+                          </div>
+            <!--Column3--><div class="col-sm-4"><br><br><button class="donationbutton">Donate</button><br><br><br>
+
+                          <a href="#!" class="">
+                          <span data-toggle="collapse" href="#donationcollapse" role="button" aria-expanded="false" aria-controls="donationcollapse">
+                            <i class="fa fa-question" aria-hidden="true"></i></span></a>
+
+                            <p class="collapse" id="donationcollapse">
+                              <br>
+                              <u style="text-decoration-color: red;">Red</u>: Project is in a dire state!<br>
+                              <u style="text-decoration-color: orange;">Orange</u>: Project could probably use some help.<br>
+                              <u style="text-decoration-color: green;">Green</u>: Would appreciate any help.
+                              <br><br><br>
+                            </p>
+                          </div>
+        </div>
+        <br>
+    </div>
+      
+    </div>
+    <!-- --Script-- -->
+    <!-- For menu overlay -->
     <script>
       function openNav() {
         document.getElementById("myNav").style.width = "100%";
@@ -270,15 +254,40 @@
       function closeNav() {
         document.getElementById("myNav").style.width = "0%";
       }
-      </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script>window.jQuery || document.write('<script src="{% static "js/jquery-slim.min.js" %}"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js" integrity="sha512-O6R6IBONpEcZVYJAmSC+20vdsM07uFuGjFf0n/Zthm8sOFW+lAq/OK1WOL8vk93GBDxtMIy6ocbj6lduyeLuqQ==" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+      
+      // <!-- for Add Card overlay -->
+      
+        function openAdd() {
+          document.getElementById("Addpanel").style.height = "100%";
+        }
+        
+        function closeAdd() {
+          document.getElementById("Addpanel").style.height = "0%";
+        }
+        
+        // <!-- For all cards view button / subcard -->
+        
+          function openView(dis) {
+          //var dis = "myNav";
+            document.querySelector("#"+dis).style.height = "100%";
+            document.body.style.overflow = "hidden";
+          }
+  
+          function closeView(dis) {
+            document.querySelector("#"+dis).style.height = "0%";
+            document.body.style.overflow = "auto";
+          }
+          
+          $('#donationcollapse').on('show.bs.collapse', function () {
+            console.log("its working");
+              this.scrollIntoView();
+            });
+          </script>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>

@@ -1,0 +1,333 @@
+
+
+@import url(//db.onlinewebfonts.com/c/13adb8ecf0b34eeb6dc616544371b8d5?family=Plain+Ultrathin);
+      /* --Misc / Global CSS */
+      a{
+        text-decoration: none;
+        color: white;
+      }
+      a:hover{
+        text-decoration: none;
+        color: white;
+      }
+        body{
+
+            background-color: #16171a;
+            color: white;
+            width: 100%;
+        }
+        /* --Topnav CSS */
+        .topnav{
+          z-index: 100;
+          position: fixed;
+          top: 0;
+          left: 0;
+          margin: 0;
+          height: 5vw;
+          min-height: 90px;
+          padding: 10px;
+          background-color:rgba(0, 0, 0, 0.2);
+          width: 100%;
+          text-align: center;
+        }
+        .thematicspacing{
+          margin-top: 11vh;
+        }
+        hr{
+
+          width: 75%;
+          height: 1px;
+          background-color:#292b32;
+          border: 0 none;
+        }
+        /* --List CSS-- */
+        ul{
+          text-decoration: none;
+          list-style: none;
+        }
+        li.left{
+          float: left;
+          margin: 2px 0px 0px 1px;
+        } 
+        li.right{
+          float: right;
+          margin: 30px 20px 0px 0px;
+        }
+        /* --Footer CSS-- */
+        .footer{
+          z-index: 10;
+          position: relative;
+          bottom: 0;
+          width: 100%;
+          height: 2.5rem;
+          text-align: center;
+        }
+        .footerleft {
+          background-color: red;
+        }
+        .footerright {
+          background-color: blue;
+        }
+        /* --Button CSS-- */
+        button,
+        .button{
+          --button: hsl(0, 0%, 12%);
+          --button-hover: hsl(0, 0%, 20%);
+          --button-active:  hsl(0, 0%, 30%);
+          --button-visited: hsl(0, 0%, 20%);
+          --button-colour: var(--colour-white);
+          --button-border: var(--colour-black);
+        }
+
+
+        button {
+          padding: .9rem 1.7rem;
+          color: var(--button-colour);
+          font-weight: 500;
+          font-size: 16px;
+          transition: all 0.3s ease-in-out;
+          background: var(--button);
+          border: solid 1px var(--button-border);
+          box-shadow: inset 0 0 0 2px var(--colour-white);
+          margin-right: 1em;
+        }
+
+        button:hover {
+          background: var(--button-hover);
+          box-shadow: inset 0 0 0 4px var(--colour-white);
+        }
+
+        button:active {
+          background: var(--button-active);
+        }
+
+        button:visited {
+          background: var(--button-visited);
+        }
+        /* --Donation CSS-- */
+        .donationbutton{
+          border-bottom: 1px solid red;
+        }
+        .donationtooltip{
+          border: 1px solid red;
+          border-radius: 20px;
+        }
+        
+        
+        /* --Menu CSS-- */
+        .overlay {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1000;
+          top: 0;
+          left: 0;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0, 0.9);
+          overflow-x: hidden;
+          transition: 0.5s;
+        }
+
+        .overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        .overlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .overlay a:hover, .overlay a:focus {
+          color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+        }
+        /* --Add panel CSS-- */
+        .addoverlay {
+          height: 0%;
+          width: 100%;
+          position: fixed;
+          z-index: 1000;
+          top: 0;
+          left: 0;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0, 0.9);
+          overflow-y: hidden;
+          transition: 0.5s;
+        }
+
+        .add-overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        .addoverlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .addoverlay a:hover, .addoverlay a:focus {
+          color: #f1f1f1;
+        }
+
+        .addoverlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .addoverlay {overflow-y: auto;}
+          .addoverlay a {font-size: 20px}
+          .addoverlay .closebtn {
+          font-size: 40px;
+          top: 15px;
+          right: 35px;
+          }
+        }
+        /* --Floating button CSS-- */
+        .floatingbutton{
+          z-index: 50;
+          position:fixed;
+          width:50px;
+          height:50px;
+          bottom:40px;
+          right:40px;
+          background-color: #16171a;
+          border: 2px solid #11998e;
+          color:#FFF;
+          border-radius:30px;
+          text-align:center;
+        }
+        /* --Task Card CSS-- */
+        .taskspace{
+          z-index: 10;
+          width: 100%;
+          min-height: 80vh;
+        }
+        .taskcard{
+          height: 100%;
+          background-color:rgba(0, 0, 0, 0.5);
+            margin-top: 15px;
+
+            margin-bottom: 15px;
+        }
+        /* --Centering styling-- */
+        .centerFlex {
+            margin: 0;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            -ms-transform: translate(-50%, -30%);
+            transform: translate(-50%, -30%);
+            text-align: center;
+        }
+        input {
+          margin-bottom: 5vh;
+          border-right: none;
+          border-top: none;
+          border-left: none;
+          background-color:transparent;
+          outline: none;
+          color: white;
+          caret-color: white;
+        }
+      /* breakpoint at height 850px: primarily for fixing top hr break*/
+      @media screen and (max-height: 850px) {
+        .thematicspacing{
+          margin-top: 15vh;
+        }
+
+        }
+        @media screen and (max-height: 650px) {
+        .thematicspacing{
+          margin-top: 18vh;
+        }
+
+        }
+
+        @media screen and (max-width: 450px) {
+        .subcard_card_time_left{
+          color:red;
+        }
+
+        }
+        /* TEMPRAORY CARD OVERLAYCSS */
+
+        .subcardoverlay {
+          height: 0%;
+          width: 100%;
+          position: fixed;
+          z-index: 1000;
+          top: 0;
+          left: 0;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0, 0.9);
+          overflow-y: scroll;
+          transition: 0.5s;
+        }
+
+        .subcard-overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        .subcardoverlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .subcardoverlay a:hover, .subcardoverlay a:focus {
+          color: #f1f1f1;
+        }
+
+        .subcardoverlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+        }
+    /* checkbox label */
+        .subcardoverlay label {
+        border:1px solid #fff;
+        padding:10px;
+        margin:0 0 10px;
+        display:block; 
+        transition:0.3s;
+        max-width:50%;
+        text-align:left;
+        }
+
+        .subcardoverlay label:hover {
+        border: 1px solid #11998e;
+        cursor:pointer;
+        }
+
