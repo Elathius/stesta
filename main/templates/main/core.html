@@ -98,11 +98,14 @@
               </div>
             <br>
             
-            <form action="#">
+            <form action="editcardsubmission" method="POST">
+              {% csrf_token %}
               <!-- Add subtask | Checkbox -->
-                <br>
-                <input class="justify-content-start" type="text"  placeholder="Add Subtask" >
-              
+              <hr style="height: 2px; width: 30vw; color: white;">
+              <div class="d-flex flex-row">
+                <input class="justify-content-center" type="text" name="newsubtaskname" placeholder="Add Subtask" style="width: 25vw; margin-left: 15vw;" >
+                  <input name="newsubtask_confirm" type="checkbox">
+              </div>
               <!-- Subtask section, on click to open, closed by default -->
               <div>
                 <h4 class="d-flex justify-content-center">View subtasks</h4>
@@ -113,9 +116,9 @@
                   {% for sub_tasks in subtasks %}
                   {% if sub_tasks.task_name.task_name == card.task_name %}
                                   {% if sub_tasks.subtask_state == True %}
-                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" checked value="{{sub_tasks.subtask_name}}/{{card.taskid}}" /></label>
+                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" name="subtaskvalue" checked value="{{sub_tasks.subtask_name}}" /></label>
                                   {% else %}
-                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" value="{{sub_tasks.subtask_name}}/{{card.taskid}}" /></label>
+                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" name="subtaskvalue" value="{{sub_tasks.subtask_name}}" /></label>
                                   {% endif %}
                                 {% endif %}
                   

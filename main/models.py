@@ -38,6 +38,8 @@ class SubCard(models.Model):
     task_name = models.ForeignKey(Card , on_delete=models.CASCADE)
     subtask_state = models.BooleanField(default=False)
 
+    class Meta:
+        unique_together = ('subtask_name', 'task_name',)
 
     def str(self):
         return self.subtask_name
