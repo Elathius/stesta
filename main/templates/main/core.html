@@ -24,7 +24,7 @@
     <div id="myNav" class="overlay">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <div class="overlay-content">
-        <a href="#"><u>Elathius</u></a>
+        <a href="#"><u>{{request.user.username | capfirst}}</u></a>
         <a href="#">Guide</a>
         <a href="#">Support</a>
         <a href="logout">Logout</a>
@@ -35,7 +35,7 @@
         <ul>
           <li class="left"><a href="/"><img style="max-width: 75px;" src="https://cdn.discordapp.com/attachments/714130033957929012/734709351574667294/Untitled-2.png"></a></li>
           <a href="#">
-          <li class="right"><span onclick="openNav()" >&#9776; Hello, Elathius</span></li>
+          <li class="right"><span onclick="openNav()" >&#9776; Hello, {{request.user.username | capfirst}}</span></li>
           </a>
         </ul>
 
