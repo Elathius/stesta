@@ -1,3 +1,17 @@
+steer/secret_settings.py
+main/templates/main/core2.html
+main/templates/main/core3.html
+main/templates/main/core4.html
+main/templates/main/core5.html
+main/templates/main/core6.html
+main/templates/main/core7.html
+main/templates/main/core8.html
+main/templates/main/core9.html
+main/templates/main/core10.html
+main/templates/main/core_template_old.html
+main/templates/main/core_aditya.html
+static/css/album.css
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
