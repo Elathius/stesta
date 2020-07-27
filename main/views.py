@@ -11,14 +11,26 @@ from django.contrib.auth.decorators import login_required
 # ############### Helper functions ############# #
 
 def create_subtask(subtaskname,subtaskstate, id):
-    newsubtask = SubCard(subtask_name=subtaskname, subtask_state=subtaskstate, task_name=id)
+    #fetch the card instance
+    card = Card.objects.filter(taskid=id)
+    card = card[0]
+    #create subtask using card
+    newsubtask = SubCard(subtask_name=subtaskname, subtask_state=subtaskstate, task_name=card)
+    #commit changes
     newsubtask.save()
     return True
 
 def delete_subtask():
     return True
 
-def update_subtask(subtaskstate, id, nameofsubtask):
+def update_subtask(id, nameofsubtask, subtaskstate):
+    
+    subtask = SubCard.objects.filter(task_name=id,subtask_name=nameofsubtask)
+    subtask = subtask[0]
+    print("Updating subtask: ",subtask.subtask_name," with new state of: ",subtaskstate)
+    subtask.subtask_state = subtaskstate
+    subtask.save()
+
     return True
 
 
@@ -62,20 +74,26 @@ def editcardsubmission(request):
     if 'editcardsubmission' in request.POST:
         # Get list of all subtasks of the card
         subtasklist = SubCard.objects.values_list('subtask_name', flat=True).filter(task_name=request.POST.get('carduuid'))
-        print("New subtask: ",request.POST.get('newsubtaskname')," was returned with value ",request.POST.get('newsubtask_confirm',False))
+        #Check Add Subtask fields
+        Add_subtask = request.POST.get('newsubtaskname')
+        newsubtask_state = request.POST.get('newsubtask_state',False)
+        print("New subtask: [",Add_subtask,"] was returned with value ",newsubtask_state)
         # Get updated list of all subtasks marked completed
         subtasktruelist = request.POST.getlist('subtaskvalue')
         print("Updated list of subtasks state: ", subtasktruelist)
-        # Compare and make a list of all subtasks as completed/pending
+
+        ## Commits
+        # Subtasks update
         for i in subtasklist:
             if(i in subtasktruelist):
                 print(i," Completed")
-                update_subtask(True,request.POST.get('carduuid'),i)
+                update_subtask(request.POST.get('carduuid'),i,True)
             else:
                 print(i, " Pending")
-                #update_subtask(False,request.POST.get('carduuid'),i)
-
-        #commit changes: Add new subtask | Update subtasks status
+                update_subtask(request.POST.get('carduuid'),i,False)
+        #Add new subtask
+        if(Add_subtask != ""):
+            create_subtask(Add_subtask,newsubtask_state,request.POST.get('carduuid'))
 
         return redirect('/core')
     
