@@ -90,10 +90,10 @@
           <!-- Subcard overlay -->
           <div class="addwrap centerFlex">
             <!-- DOT | NAME | TIME -->
-            <div class="overlayheader" style="width:60vw; margin-top: 15vh;">
-              <div id="subcardheader" class="d-flex justify-content-around">
-                <span class="subcard_card_urgency_color" style="height:25px; width:25px; border-radius:50%; display: inline-block; background-color:blue;"></span>
-                <h3  class="justify-content-center subcard_card_title" style="margin-right:-35px;">{{card.task_name}}</h3> 
+            <div class="overlayheader">
+              <div id="subcardheader" class="d-flex justify-content-around align-items-center">
+                <span class="subcard_card_urgency_color" ></span>
+                <h3  class="justify-content-center subcard_card_title" >{{card.task_name}}</h3> 
                 <h5 class="subcard_card_time_left">-16 mins</h5>
               </div>
             <br>
@@ -101,24 +101,45 @@
             <form action="editcardsubmission" method="POST">
               {% csrf_token %}
               <!-- Add subtask | Checkbox -->
-              <hr style="height: 2px; width: 30vw; color: white;">
+              <hr>
               <div class="d-flex flex-row">
-                <input class="justify-content-center" type="text" name="newsubtaskname" placeholder="Add Subtask" style="width: 25vw; margin-left: 15vw;" >
-                  <input name="newsubtask_state" value="True" type="checkbox">
+                <input class="justify-content-center doom" type="text" name="newsubtaskname" placeholder="Add Subtask" style="width: 25vw; margin-left: 15.5vw;" >
+                <label class="containr">
+                  <input type="checkbox" name="newsubtask_state" value="True">
+                  <span class="checkmark" style="margin-left: 5px;"></span>
+                </label>
               </div>
               <!-- Subtask section, on click to open, closed by default -->
               <div>
-                <h4 class="d-flex justify-content-center">View subtasks</h4>
+                <h4 class="d-flex justify-content-center" style="font-size: 1.5rem !important; color: white;">View subtasks</h4>
                 <br>
                 
-                <div class="collapse collapsiblelist d-flex justify-content-center" id="collapseExample">
+                <div class="collapse collapsiblelist " id="collapseExample">
                   <!-- Load all subtasks of this specific card -->
                   {% for sub_tasks in subtasks %}
                   {% if sub_tasks.task_name.task_name == card.task_name %}
                                   {% if sub_tasks.subtask_state == True %}
-                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" name="subtaskvalue" checked value="{{sub_tasks.subtask_name}}" /></label>
+                                  <!-- <label style="margin-left: auto; margin-right: auto;" >{{sub_tasks.subtask_name}}
+                                    <input style="float:center;" type="checkbox" name="subtaskvalue" checked value="{{sub_tasks.subtask_name}}" />
+                                  </label> -->
+                                  <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto; width:40vw;">
+                                    <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
+                                    <label class="containr ">
+                                      <input type="checkbox" name="subtaskvalue" checked value="{{sub_tasks.subtask_name}}">
+                                      <span class="checkmark" style="margin-left: 5px;" ></span>
+                                    </label>
+                                  </div>
                                   {% else %}
-                                  <label >{{sub_tasks.subtask_name}}<input style="float:right;" type="checkbox" name="subtaskvalue" value="{{sub_tasks.subtask_name}}" /></label>
+                                  <!-- <label >{{sub_tasks.subtask_name}}
+                                    <input style="float:center;" type="checkbox" name="subtaskvalue" value="{{sub_tasks.subtask_name}}" />
+                                  </label> -->
+                                  <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto; width: 40vw;">
+                                    <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
+                                    <label class="containr">
+                                      <input type="checkbox" name="subtaskvalue" value="{{sub_tasks.subtask_name}}">
+                                      <span class="checkmark" style="margin-left: 5px;" ></span>
+                                    </label>
+                                  </div>
                                   {% endif %}
                                 {% endif %}
                   
@@ -128,11 +149,7 @@
                 </div>
                 
                   <!-- down arrow -->
-                  <a href="#!">
-                    <span data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
-                      &#8964;
-                    </span>
-                  </a>
+                  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-top: -7vh;"><span class="justify-content-center">&#8964;</span></a>
                   <br>
               </div>
               <!-- Progress slider -->
