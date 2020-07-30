@@ -30,7 +30,6 @@ urlpatterns = [
     path("getstarted", views.getstarted, name="getstarted"),
     path("editcardsubmission", views.editcardsubmission, name="editcardsubmission"),
     path("deletecardsubmission", views.deletecardsubmission, name="cdeletecardsubmission"),
-<<<<<<< HEAD
     path(
         'change-password/',
         auth_views.PasswordChangeView.as_view(template_name='main/change-password.html',success_url="../password_change_done"),
@@ -38,12 +37,10 @@ urlpatterns = [
     ),
     path(
         'password_change_done/',
-        auth_views.PasswordChangeView.as_view(template_name='main/password_change_done.html'),
+        auth_views.PasswordChangeDoneView.as_view(template_name='main/password_change_done.html'),
         name="password_change_done"
     ),
 
-=======
     path("donation", views.donation, name="donation"),
     
->>>>>>> ad56d64f900e7f086fb31ed68783ce3646f9d3fe
 ]
