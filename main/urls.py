@@ -28,5 +28,6 @@ urlpatterns = [
     path("getstarted", views.getstarted, name="getstarted"),
     path("editcardsubmission", views.editcardsubmission, name="editcardsubmission"),
     path("deletecardsubmission", views.deletecardsubmission, name="cdeletecardsubmission"),
+    path("donation", views.donation, name="donation"),
     
 ]

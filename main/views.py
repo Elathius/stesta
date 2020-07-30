@@ -189,6 +189,10 @@ def login_request(request):
                     context={"form":form})
 
 
+def donation(request):
+    return render(request = request,
+                  template_name='main/donation.html')
+
 def error404(request, exception, template_name='404.html'):
     response = render(request, template_name)
     response.status_code = 404
