@@ -78,6 +78,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'steer.wsgi.application'
 
+# config/settings.py
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

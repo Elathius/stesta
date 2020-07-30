@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
+
 
 
 app_name = 'main'  # here for namespacing of urls.
@@ -28,5 +30,15 @@ urlpatterns = [
     path("getstarted", views.getstarted, name="getstarted"),
     path("editcardsubmission", views.editcardsubmission, name="editcardsubmission"),
     path("deletecardsubmission", views.deletecardsubmission, name="cdeletecardsubmission"),
-    
+    path(
+        'change-password/',
+        auth_views.PasswordChangeView.as_view(template_name='main/change-password.html',success_url="../password_change_done"),
+        name="password_change"
+    ),
+    path(
+        'password_change_done/',
+        auth_views.PasswordChangeView.as_view(template_name='main/password_change_done.html'),
+        name="password_change_done"
+    ),
+
 ]
