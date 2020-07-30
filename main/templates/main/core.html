@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {% load static %}
+    {% load time_tags%}
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/736491929172180993/736498774431629363/resized_logocircle1.png">
     <!-- Required meta tags -->
@@ -73,11 +74,11 @@
               <div class="d-flex ">
                 <button class="button" type="button" onclick="openView('prefix{{card.taskid}}')">View</button>
                 {% if card.task_urgency == 'low' %}
-                <medium class="ml-auto p-2" style="border-bottom: 1px solid green ;">- {{ card.task_deadline|timeuntil }}</medium>
+                <medium class="ml-auto p-2" style="border-bottom: 1px solid green ;">- {{ card.task_deadline|timeuntil|split_timeuntil}}</medium>
                 {% elif card.task_urgency == 'medium' %}
-                <medium class="ml-auto p-2" style="border-bottom: 1px solid orange ;">- {{ card.task_deadline|timeuntil }}</medium>
+                <medium class="ml-auto p-2" style="border-bottom: 1px solid orange ;">- {{ card.task_deadline|timeuntil|split_timeuntil }}</medium>
                 {% elif card.task_urgency == 'high' %}
-                <medium class="ml-auto p-2" style="border-bottom: 1px solid red ;">- {{ card.task_deadline|timeuntil }}</medium>
+                <medium class="ml-auto p-2" style="border-bottom: 1px solid red ;">- {{ card.task_deadline|timeuntil|split_timeuntil }}</medium>
                 {% endif %}
               </div>
             </div>

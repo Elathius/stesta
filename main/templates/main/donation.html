@@ -1,5 +1,5 @@
 {% extends 'main/landingtemplate.html' %}
-
+{% load time_tags %}
 {% block title %}
 <title>Steer | Thank you!</title>
 {% endblock %}
@@ -20,7 +20,7 @@
     </a>
     <br><br><br>
     <a href="/">
-    <i class="fa fa-undo" aria-hidden="true" style="font-size: 40px;">&nbsp;</i>
+    <i class="fa fa-undo" aria-hidden="true" style="font-size: 40px;">&nbsp;{{current_time}}</i>
     </a>
   </div>
   

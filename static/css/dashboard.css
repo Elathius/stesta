@@ -1,6 +1,7 @@
 /* @import url(//db.onlinewebfonts.com/c/13adb8ecf0b34eeb6dc616544371b8d5?family=Plain+Ultrathin); */
 /* @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One); */
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
 
 
       /* --Misc / Global CSS */
@@ -13,8 +14,8 @@
         color: white;
       }
         body{
-          font-family: 'Raleway', sans-serif;
-          font-weight: 350;
+          font-family: 'Quicksand', sans-serif;
+          font-weight: 300;
           background-color: #16171a;
           color: white;
           width: 100%;
