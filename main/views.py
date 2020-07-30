@@ -64,6 +64,9 @@ def updateprogress(uuid):
 # ################ VIEWS ############### #
 
 # Create your views here.
+def password_change_done(request):
+    return render(request, "main/password_change_done.html")
+    
 def homepage(request):
     return render(request = request,
                   template_name='main/landing.html',
