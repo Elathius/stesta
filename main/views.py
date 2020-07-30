@@ -6,6 +6,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from .forms import NewUserForm, AddCardForm, EditSubCardForm
 from django.contrib.auth.decorators import login_required
+import datetime
 
 
 # ############### Helper functions ############# #
@@ -20,7 +21,14 @@ def create_subtask(subtaskname,subtaskstate, id):
     newsubtask.save()
     return True
 
-def delete_subtask():
+def delete_subtask(id, nameofsubtask):
+    #fetch card instance
+    card = Card.objects.filter(taskid=id)
+    card = card[0]
+    #Delete subcard
+    subtask = SubCard.objects.filter(task_name=card,subtask_name=nameofsubtask)
+    print("Deleting subcard with name: ",nameofsubtask)
+    subtask.delete()
     return True
 
 def update_subtask(id, nameofsubtask, subtaskstate):
@@ -34,6 +42,24 @@ def update_subtask(id, nameofsubtask, subtaskstate):
     return True
 
 
+def updateprogress(uuid):
+
+    completed = 0
+    subtasklist = SubCard.objects.values_list('subtask_state', flat=True).filter(task_name=uuid)
+    total = len(subtasklist)
+    card = Card.objects.get(taskid = uuid)
+    print(card.task_progress)
+    if(total != 0):
+        for i in subtasklist:
+            if(i == True):
+                completed=completed+1
+        progress = (completed/total)*100
+        print(progress,"%")
+        card.task_progress = progress
+        card.save()
+    else:
+        card.task_progress = 0
+        card.save()
 
 # ################ VIEWS ############### #
 
@@ -65,6 +91,7 @@ def core(request):
        if form.is_valid():
             formtocommit = form.save(commit=False)
             formtocommit.task_owner = request.user
+            formtocommit.task_deadline = datetime.datetime.combine(formtocommit.task_deadline_date,formtocommit.task_deadline_time)
             formtocommit.save()
             print("Saved entry")
             return redirect("/core")
@@ -72,6 +99,15 @@ def core(request):
 
 def editcardsubmission(request):
     if 'editcardsubmission' in request.POST:
+        ## 1.) Delete subtasks marked for deletion before updation:
+        subtaskdeletelist = request.POST.getlist('subtaskdeletes')
+        print(len(subtaskdeletelist))
+        print("Subtasks marked for deletion: ", subtaskdeletelist)
+        if(len(subtaskdeletelist)>0):
+            for i in subtaskdeletelist:
+                delete_subtask(request.POST.get('carduuid'),i)
+
+        ## 2.) Update subtasks state:
         # Get list of all subtasks of the card
         subtasklist = SubCard.objects.values_list('subtask_name', flat=True).filter(task_name=request.POST.get('carduuid'))
         #Check Add Subtask fields
@@ -95,6 +131,8 @@ def editcardsubmission(request):
         if(Add_subtask != ""):
             create_subtask(Add_subtask,newsubtask_state,request.POST.get('carduuid'))
 
+        #Update progress and return
+        updateprogress(request.POST.get('carduuid'))
         return redirect('/core')
     
     return redirect('/core')

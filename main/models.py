@@ -18,7 +18,7 @@ class Card(models.Model):
     task_time = models.DateTimeField(auto_now=True)
     task_deadline_date = models.DateField(auto_now=False, default=datetime.date(2020,1,1))
     task_deadline_time = models.TimeField(auto_now=False, default=datetime.time(11, 59, 59))
-    #task_deadline = models.DateTimeField(auto_now=False)
+    task_deadline = models.DateTimeField(auto_now=False, null=True)
     task_urgency_choices = [
         (low, 'low'),
         (medium, 'medium'),

@@ -1,6 +1,8 @@
+/* @import url(//db.onlinewebfonts.com/c/13adb8ecf0b34eeb6dc616544371b8d5?family=Plain+Ultrathin); */
+/* @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One); */
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 
 
-@import url(//db.onlinewebfonts.com/c/13adb8ecf0b34eeb6dc616544371b8d5?family=Plain+Ultrathin);
       /* --Misc / Global CSS */
       a{
         text-decoration: none;
@@ -11,10 +13,11 @@
         color: white;
       }
         body{
-
-            background-color: #16171a;
-            color: white;
-            width: 100%;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 350;
+          background-color: #16171a;
+          color: white;
+          width: 100%;
         }
         /* --Topnav CSS */
         .topnav{
@@ -309,6 +312,11 @@
           color: #f1f1f1;
         }
 
+        .subcardoverlay a span:hover{
+
+          cursor: pointer;
+        }
+
         .subcardoverlay .closebtn {
           position: absolute;
           top: 20px;
@@ -326,10 +334,10 @@
         text-align:left;
         }
 
-        .subcardoverlay label:hover {
-        /* border: 1px solid #11998e; */
-        /* cursor:pointer; */
-        }
+        /* .subcardoverlay label:hover {
+        /* border: 1px solid #11998e; 
+        /* cursor:pointer; 
+        } */
 
       /* custom checkbox starts */
       /* The container */
@@ -346,6 +354,8 @@
           user-select: none;
         }
 
+        /* CHECKBOXES CSS */
+
         /* Hide the browser's default checkbox */
         .containr input {
           position: absolute;
@@ -360,35 +370,59 @@
           position: absolute;
           top: 0;
           left: 0;
-          height: 25px;
-          width: 25px;
-          background-color: #eee;
+          height: 30px;
+          width: 30px;
+          border:1px solid #11998e;
+          background-color: transparent;
+          text-align: center;
         }
 
-        /* On mouse-over, add a grey background color */
-        .containr:hover input ~ .checkmark {
-          background-color: #ccc;
-        }
+        
 
         /* When the checkbox is checked, add a blue background */
         .containr input:checked ~ .checkmark {
-          background-color: #2196F3;
+          background-color: #11998e;
+          color:black;
         }
 
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
-          content: "";
-          position: absolute;
-          display: none;
-        }
-
-        /* Show the checkmark when checked */
-        .containr input:checked ~ .checkmark:after {
-          display: block;
-        }
+       
 
         /* Style the checkmark/indicator */
         .containr .checkmark:after {
+          left: 9px;
+          top: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+        /*######################### deletecheckbox #########################*/
+        .checkmarkdelete {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 30px;
+          width: 30px;
+          border:1px solid red;
+          background-color: transparent;
+          text-align: center;
+        }
+
+        
+
+        /* When the checkbox is checked, add a blue background */
+        .containr input:checked ~ .checkmarkdelete {
+          background-color: red;
+          color:black;
+        }
+
+       
+
+        /* Style the checkmark/indicator */
+        .containr .checkmarkdelete:after {
           left: 9px;
           top: 5px;
           width: 5px;
@@ -431,3 +465,12 @@
       }
       /* perfection ends here */
 
+/* View subtasks button animation */
+
+.pointupanimation{
+  transform: rotate(180deg);
+}
+
+.pointdownanimation{
+ transform: rotate(0deg);
+}

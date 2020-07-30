@@ -11,9 +11,10 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #006AC2;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  border-bottom: 1px solid #11998e;
+  color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 form {
@@ -168,5 +169,9 @@ input[type=submit]:hover {
 .registerbtn:hover {
   background-color: #fff;
   color: #292b32;
+}
+
+#forgotpassword {
+  font-size: 16px;
 }
 /*# sourceMappingURL=index.css.map */

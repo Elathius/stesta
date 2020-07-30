@@ -9,8 +9,9 @@ a{
 }
 a:hover{
   text-decoration: none;
-  color: #006AC2;
-  transition: 0.3s;
+  border-bottom: 1px solid #11998e;
+  color: white;
+  transition: 0.5s;
 }
 
 
@@ -142,3 +143,7 @@ input[type=submit]:hover{
   color: #292b32;
 
 }
+
+#forgotpassword{
+  font-size: 16px;
+}  
