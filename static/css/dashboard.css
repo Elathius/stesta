@@ -475,6 +475,11 @@
         margin-right: auto;
         margin-top:5px;
         width:40vw;
+        
+      }
+      .boom > .mr-auto{
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .toon{
@@ -513,6 +518,7 @@
             margin-top:5px;
             width:60vw;
         }
+        
 
         .doom{
           width: 58vw;

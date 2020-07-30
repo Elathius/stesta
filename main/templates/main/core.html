@@ -134,7 +134,7 @@
                   {% if sub_tasks.task_name.task_name == card.task_name %}
                                   {% if sub_tasks.subtask_state == True %}
                                   <div class="d-flex flex-row align-items-center justify-content-center boom" >
-                                      <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
+                                      <div class="mr-auto" style="text-overflow: ellipsis; overflow: hidden;">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr " style="margin-left: 10px;">
                                         <input type="checkbox" name="subtaskvalue" class="inputcountchecked" checked value="{{sub_tasks.subtask_name}}">
                                         <span class="checkmark align-items-center" style="margin-left: 10px;" >&#10003;</span>
@@ -142,7 +142,7 @@
                                       
                                     {% else %}
                                     <div class="d-flex flex-row align-items-center justify-content-center boom" >
-                                      <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
+                                      <div class="mr-auto" style="text-overflow: ellipsis; overflow: hidden;">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr" style="margin-left: 10px;">
                                         <input type="checkbox" name="subtaskvalue" class="inputcount" value="{{sub_tasks.subtask_name}}">
                                         <span class="checkmark align-items-center" style="margin-left: 10px;" >&#10003;</span>

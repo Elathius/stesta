@@ -79,8 +79,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'steer.wsgi.application'
 
 # config/settings.py
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -139,3 +139,10 @@ STATICFILES_DIRS = [
 #--
 
 LOGIN_URL = "/login/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD=''
