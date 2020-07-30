@@ -107,7 +107,7 @@
               <div id="subcardheader" class="d-flex justify-content-around align-items-center">
                 <span class="subcard_card_urgency_color" style="display: none;" ></span>
                 <h3  class="justify-content-center subcard_card_title" >{{card.task_name}}</h3> 
-                <h5 class="subcard_card_time_left">- {{ card.task_deadline|timeuntil }}</h5>
+                <h5 class="subcard_card_time_left">- {{ card.task_deadline|timeuntil|split_timeuntil }}</h5>
               </div>
             <br>
             
@@ -135,15 +135,15 @@
                                   <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto;margin-top:5px; width:40vw;">
                                       <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr " style="margin-left: 10px;">
-                                        <input type="checkbox" name="subtaskvalue" checked value="{{sub_tasks.subtask_name}}">
+                                        <input type="checkbox" name="subtaskvalue" class="inputcountchecked" checked value="{{sub_tasks.subtask_name}}">
                                         <span class="checkmark align-items-center" style="margin-left: 10px;" >&#10003;</span>
                                       </label>
                                       
                                     {% else %}
-                                    <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto; width: 40vw;">
+                                    <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto;margin-top:5px; width: 40vw;">
                                       <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr" style="margin-left: 10px;">
-                                        <input type="checkbox" name="subtaskvalue" value="{{sub_tasks.subtask_name}}">
+                                        <input type="checkbox" name="subtaskvalue" class="inputcount" value="{{sub_tasks.subtask_name}}">
                                         <span class="checkmark align-items-center" style="margin-left: 10px;" >&#10003;</span>
                                       </label>
                                     
@@ -183,7 +183,7 @@
               </div>
               <!-- Progress status e.g. 4/5 | 80% -->
               <div>
-                <h5>4/5 | 80%</h5>
+                <h5><span id="inputcountresult">4/5</span> | {{card.task_progress}}%</h5>
                 <br>
               </div>
               <!-- Submit -->
@@ -342,7 +342,7 @@
           this.scrollIntoView();
          });
 
-
+         
 
       </script>
       <script>
@@ -357,7 +357,13 @@
             width: f+"%",
         }, 1500);
         });
-        
+        $(".subcardoverlay").each(function(){
+          var checked =  $(this).find('.inputcountchecked').length;
+          var nonchecked = $(this).find('.inputcount').length;
+        console.log(checked,"<-");
+        console.log(nonchecked+checked,"->");
+        $(this).find('#inputcountresult').text(checked+"/"+(nonchecked+checked))
+          });
         });
       </script>
   </body>

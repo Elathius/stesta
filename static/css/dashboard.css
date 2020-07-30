@@ -209,6 +209,9 @@
           /* top: 15px; */
           right: 35px;
           }
+          .topnav{
+            background-color:rgba(0, 0, 0, 1);
+          }
         }
         /* --Floating button CSS-- */
         .floatingbutton{
@@ -275,7 +278,9 @@
         .subcard_card_time_left{
           color:red;
         }
-
+        .topnav{
+          background-color:rgba(0, 0, 0, 1);
+        }
         }
         /* TEMPRAORY CARD OVERLAYCSS */
 
