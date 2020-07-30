@@ -117,7 +117,7 @@
               <!-- Add subtask | Checkbox -->
               <hr>
               <div class="d-flex flex-row">
-                <input class="justify-content-center doom" type="text" name="newsubtaskname" placeholder="Add Subtask" style="width: 25vw; margin-left: 15.5vw;" >
+                <input class="justify-content-center doom" type="text" name="newsubtaskname" placeholder="Add Subtask" >
                 <label class="containr">
                   <input type="checkbox" name="newsubtask_state" value="True">
                   <span class="checkmark" style="margin-left: 5px;">&#10003;</span>
@@ -133,7 +133,7 @@
                   {% for sub_tasks in subtasks %}
                   {% if sub_tasks.task_name.task_name == card.task_name %}
                                   {% if sub_tasks.subtask_state == True %}
-                                  <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto;margin-top:5px; width:40vw;">
+                                  <div class="d-flex flex-row align-items-center justify-content-center boom" >
                                       <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr " style="margin-left: 10px;">
                                         <input type="checkbox" name="subtaskvalue" class="inputcountchecked" checked value="{{sub_tasks.subtask_name}}">
@@ -141,7 +141,7 @@
                                       </label>
                                       
                                     {% else %}
-                                    <div class="d-flex flex-row align-items-center justify-content-center" style="margin-left: auto; margin-right: auto;margin-top:5px; width: 40vw;">
+                                    <div class="d-flex flex-row align-items-center justify-content-center boom" >
                                       <div class="mr-auto">{{sub_tasks.subtask_name}}</div>
                                       <label class="containr" style="margin-left: 10px;">
                                         <input type="checkbox" name="subtaskvalue" class="inputcount" value="{{sub_tasks.subtask_name}}">
@@ -169,7 +169,7 @@
                   <br>
               </div>
               <!-- Progress slider -->
-              <div class="slidecontainer justify-content-center" style="width: 50%; margin-right:auto; margin-left:auto;">
+              <div class="slidecontainer justify-content-center toon" >
                 <div class="progress" style="border-radius: 0 !important; background-color: #e9ecef00 !important; border: 1px solid #11998e;">
                   <div class="progress-bar" role="progressbar" aria-valuenow="{{card.task_progress}}"
                 aria-valuemin="0" aria-valuemax="100" style="width:{{card.task_progress}}%; background-color:#11998e;">

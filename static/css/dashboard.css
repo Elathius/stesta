@@ -465,9 +465,65 @@
         background-color: white;
       }
 
-      form > .doom{
-        width: 25vw; 
+      .doom{
+        width: 28vw; 
         margin-left: 15.5vw;
+      }
+
+      .boom{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5px;
+        width:40vw;
+      }
+
+      .toon{
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @media screen and (max-width: 600px){
+        .subcardoverlay .closebtn {
+          position: absolute;
+          top: 0px;
+          right: 15px;
+          font-size: 50px;
+        }
+      
+        form > hr {
+            height: 2px;
+            width: 70vw;
+            background-color: white;
+        }
+        
+        
+        .subcard_card_time_left {
+            color: red;
+            display: none;
+        }
+        
+        #subcardheader > h3 {
+            margin-right: 0px; 
+        }
+        
+        .boom{
+            margin-left: 0;
+            margin-right: 0;
+            margin-top:5px;
+            width:60vw;
+        }
+
+        .doom{
+          width: 58vw;
+          margin-left: 0vw;
+        }
+        
+        .toon{
+            width: 100%;
+            margin-right:0;
+            margin-left:0;
+        }
       }
       /* perfection ends here */
 
