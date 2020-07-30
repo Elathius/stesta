@@ -1,0 +1,28 @@
+{% extends 'main/landingtemplate.html' %}
+{% load time_tags %}
+{% block title %}
+<title>Steer | Thank you!</title>
+{% endblock %}
+
+{%block content%}
+<div class="centerFlex" style="display:flex;justify-content:center;align-items:center;">
+  
+  <div  class="fadediv">
+
+    <h1>Thank you!</h1><br>
+    <h2>but, our donation process is not yet setup, instead give us a star or come help us improve:</h2>
+    <br>
+    
+    <i class="fa fa-github" aria-hidden="true" style="font-size: 70px;">&nbsp;</i>
+    <br><br>
+    <a href="https://github.com/Elathius/steer">
+    <button>Github</button>
+    </a>
+    <br><br><br>
+    <a href="/">
+    <i class="fa fa-undo" aria-hidden="true" style="font-size: 40px;">&nbsp;{{current_time}}</i>
+    </a>
+  </div>
+  
+</div>
+{% endblock %}
