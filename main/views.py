@@ -91,6 +91,7 @@ def core(request):
        if form.is_valid():
             formtocommit = form.save(commit=False)
             formtocommit.task_owner = request.user
+            #Fills deadline as using date and time | Used to display remaining time 
             formtocommit.task_deadline = datetime.datetime.combine(formtocommit.task_deadline_date,formtocommit.task_deadline_time)
             formtocommit.save()
             print("Saved entry")
