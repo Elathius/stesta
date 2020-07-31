@@ -110,7 +110,7 @@
         }
         /* --Donation CSS-- */
         .donationbutton{
-          border-bottom: 1px solid red;
+          border-bottom: 1px solid green;
         }
         .donationtooltip{
           border: 1px solid red;

@@ -180,7 +180,9 @@
               </div> 
               <!-- Tooltip -->
               <div>
-                <h5><i class="fa fa-question-circle-o d-flex justify-content-center" aria-hidden="true"></i></h5>
+                <h5>
+                  <i class="fa fa-question-circle-o d-flex justify-content-center" title="Edit Mode" aria-hidden="true"> </i>
+                </h5>
               </div>
               <!-- Progress status e.g. 4/5 | 80% -->
               <div>
@@ -269,6 +271,7 @@
 
                             <p class="collapse" id="donationcollapse">
                               <br>
+                              <u style="text-decoration-color: white;"></u>Currently maintained by developers.<br>
                               <u style="text-decoration-color: red;">Red</u>: Project is in a dire state!<br>
                               <u style="text-decoration-color: orange;">Orange</u>: Project could probably use some help.<br>
                               <u style="text-decoration-color: green;">Green</u>: Would appreciate any help.
@@ -348,16 +351,17 @@
       </script>
       <script>
         $(document).ready(function(){
-          var parwidth = $('.progress-bar').parent().width()
-          $(".progress-bar").each(function(){
-            console.log("done");
-              var f = $(this).width() / parwidth * 100;
-            $(this).width(0);
-            console.log(f+"%");
-            $(this).animate({
-            width: f+"%",
-        }, 1500);
-        });
+
+          var parwidth = $('.progress-bar').parent().width();
+           $("#taskspace .progress-bar").each(function(){
+             var f = $(this).width() / parwidth * 100;
+             console.log("done: ",f);
+             $(this).width(0);
+             console.log(f+"%");
+             $(this).animate({
+             width: f+"%",
+         }, 1500);
+         });
         $(".subcardoverlay").each(function(){
           var checked =  $(this).find('.inputcountchecked').length;
           var nonchecked = $(this).find('.inputcount').length;
