@@ -32,23 +32,23 @@ urlpatterns = [
     path("deletecardsubmission", views.deletecardsubmission, name="cdeletecardsubmission"),
     path(
         'change-password/',
-        auth_views.PasswordChangeView.as_view(template_name='main/change-password.html',success_url="../password_change_done"),
+        auth_views.PasswordChangeView.as_view(template_name='main/password/change-password.html',success_url="../../password_change_done"),
         name="password_change"
     ),
     path(
         'password_change_done/',
-        auth_views.PasswordChangeDoneView.as_view(template_name='main/password_change_done.html'),
+        auth_views.PasswordChangeDoneView.as_view(template_name='main/password/password_change_done.html'),
         name="password_change_done"
     ),
 
     path("donation", views.donation, name="donation"),
 
-    path("reset_password/", auth_views.PasswordResetView.as_view(template_name="main/password_reset.html", success_url="../reset_password_sent"), name="reset_password"),
+    path("reset_password/", auth_views.PasswordResetView.as_view(template_name="main/password/password_reset.html", success_url="../../reset_password_sent"), name="reset_password"),
 
-    path("reset_password_sent/", auth_views.PasswordResetDoneView.as_view(template_name="main/password_reset_done.html"), name="password_reset_done"),
+    path("reset_password_sent/", auth_views.PasswordResetDoneView.as_view(template_name="main/password/password_reset_done.html"), name="password_reset_done"),
 
-    path("reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name="main/password_reset_confirm.html", success_url="../../../reset_password_complete"), name="password_reset_confirm"),
+    path("reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html", success_url="../../../../reset_password_complete"), name="password_reset_confirm"),
 
-    path("reset_password_complete/", auth_views.PasswordResetCompleteView.as_view(template_name="main/password_reset_complete.html"), name="password_reset_complete"),
+    path("reset_password_complete/", auth_views.PasswordResetCompleteView.as_view(template_name="main/password/password_reset_complete.html"), name="password_reset_complete"),
     
 ]
