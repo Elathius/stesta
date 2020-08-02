@@ -110,7 +110,7 @@
               <div id="subcardheader" class="d-flex justify-content-around align-items-center">
                 <span class="subcard_card_urgency_color" style="display: none;" ></span>
                 <h3  class="justify-content-center subcard_card_title" >{{card.task_name}}</h3> 
-                <h5 class="subcard_card_time_left">- {{ card.task_deadline|timeuntil|split_timeuntil }}</h5>
+                <h5 class="subcard_card_time_left" id="deadlinetime" data-deadline-date="{{ card.task_deadline|date:"Y-m-d"}}" data-deadline-time="{{ card.task_deadline|time:"H:i:s"}}"></h5>
               </div>
             <br>
             
@@ -395,6 +395,19 @@
             });
             console.log(d);
             console.log("<---->");
+            $(this).find('#deadlinetime').text(d);
+          });
+          $(".subcardoverlay #subcardheader").each(function(){
+            var dateobject = $(this).find('#deadlinetime').data("deadline-date");
+            var timeobject = $(this).find('#deadlinetime').data("deadline-time");
+
+            var date = moment(dateobject).add(moment.duration(timeobject));
+            var difference = moment(datenow).diff(moment(date));
+            var d = moment.duration(difference).format("d [days], h [hours], m [m], s [s]", {
+              largest: 1
+            });
+            console.log(d);
+            console.log("^----^");
             $(this).find('#deadlinetime').text(d);
           });
 
