@@ -1,8 +1,6 @@
-body{
-    background-color: #16171a;
-    color: white;
-    text-align: center;
-}
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+ 
+
 a{
   color: white;
   text-decoration: none;
@@ -98,7 +96,7 @@ $gray: #9b9b9b;
 }
 /* demo */
 body {
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Quicksand',sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,6 +104,8 @@ body {
   min-height: 100vh;
   font-size: 1.5rem;
   background-color:#16171a;
+  color: white;
+  text-align: center;
 }
 
 /* Link Button CSS */
@@ -179,4 +179,8 @@ input[type=submit]:hover{
   .registerbtn {
     padding: 0%;
   }
+}
+ 
+.wrap_passwordcontent{
+  max-width: 75%;
 }
