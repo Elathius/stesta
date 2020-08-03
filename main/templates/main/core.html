@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     {% load static %}
-    {% load time_tags%}
+    {% load time_tags %}
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/736491929172180993/736498774431629363/resized_logocircle1.png">
     <!-- Required meta tags -->
@@ -271,7 +271,7 @@
 
                             <p class="collapse" id="donationcollapse">
                               <br>
-                              <u style="text-decoration-color: white;"></u>Currently maintained by developers.<br>
+                              <u style="text-decoration-color: white;">!</u>&nbsp;Currently maintained by developers.<br>
                               <u style="text-decoration-color: red;">Red</u>: Project is in a dire state!<br>
                               <u style="text-decoration-color: orange;">Orange</u>: Project could probably use some help.<br>
                               <u style="text-decoration-color: green;">Green</u>: Would appreciate any help.
@@ -283,42 +283,8 @@
     </div>
       
     </div>
-    <!-- --Script-- -->
-    <!-- For menu overlay -->
-    <script>
-      function openNav() {
-        document.getElementById("myNav").style.width = "100%";
-      }
-      
-      function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-      }
-      
-      // <!-- for Add Card overlay -->
-      
-        function openAdd() {
-          document.getElementById("Addpanel").style.height = "100%";
-        }
-        
-        function closeAdd() {
-          document.getElementById("Addpanel").style.height = "0%";
-        }
-        
-        // <!-- For all cards view button / subcard -->
-        
-          function openView(dis) {
-          //var dis = "myNav";
-            document.querySelector("#"+dis).style.height = "100%";
-            document.body.style.overflow = "hidden";
-          }
-  
-          function closeView(dis) {
-            document.querySelector("#"+dis).style.height = "0%";
-            document.body.style.overflow = "auto";
-          }
-          
-          
-        </script>
+    
+    
           
 
     <!-- Optional JavaScript -->
@@ -329,89 +295,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.3.2/moment-duration-format.min.js" integrity="sha512-ej3mVbjyGQoZGS3JkES4ewdpjD8UBxHRGW+MN5j7lg3aGQ0k170sFCj5QJVCFghZRCio7DEmyi+8/HAwmwWWiA==" crossorigin="anonymous"></script>
-    
-    <!-- <script>
-      $('#collapseExample').on('hide.bs.collapse', function () {
-          // do something... rotate button
-          console.log("Hiding");
-          $('#viewsubtasksbutton').style.transform = rotate(0deg);
-        });
-
-      $('#collapseExample').on('show.bs.collapse', function () {
-         // do something... rotate button
-          console.log("showing");
-          $('#viewsubtasksbutton').style.transform = rotate(180deg);
-        });
-      
-
-      $('#donationcollapse').on('show.bs.collapse', function () {
-        console.log("its working");
-          this.scrollIntoView();
-         });
-
-         
-
-      </script> -->
-
-      <script>
-        $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
-        });
-      </script>
-
-      <script>
-        $(document).ready(function(){
-
-          var parwidth = $('.progress-bar').parent().width();
-           $("#taskspace .progress-bar").each(function(){
-             var f = $(this).width() / parwidth * 100;
-             console.log("done: ",f);
-             $(this).width(0);
-             console.log(f+"%");
-             $(this).animate({
-             width: f+"%",
-         }, 1500);
-         });
-        $(".subcardoverlay").each(function(){
-          var checked =  $(this).find('.inputcountchecked').length;
-          var nonchecked = $(this).find('.inputcount').length;
-        console.log(checked,"<-");
-        console.log(nonchecked+checked,"->");
-        $(this).find('#inputcountresult').text(checked+"/"+(nonchecked+checked))
-          });
-        });
-      </script>
-      <script>
-
-        var datenow = moment.utc().local().format();
-        $("#taskspace .card-body").each(function(){
-            var dateobject = $(this).find('#deadlinetime').data("deadline-date");
-            var timeobject = $(this).find('#deadlinetime').data("deadline-time");
-
-            var date = moment(dateobject).add(moment.duration(timeobject));
-            var difference = moment(datenow).diff(moment(date));
-            var d = moment.duration(difference).format("d [days], h [hours], m [m], s [s]", {
-              largest: 1
-            });
-            console.log(d);
-            console.log("<---->");
-            $(this).find('#deadlinetime').text(d);
-          });
-          $(".subcardoverlay #subcardheader").each(function(){
-            var dateobject = $(this).find('#deadlinetime').data("deadline-date");
-            var timeobject = $(this).find('#deadlinetime').data("deadline-time");
-
-            var date = moment(dateobject).add(moment.duration(timeobject));
-            var difference = moment(datenow).diff(moment(date));
-            var d = moment.duration(difference).format("d [days], h [hours], m [m], s [s]", {
-              largest: 1
-            });
-            console.log(d);
-            console.log("^----^");
-            $(this).find('#deadlinetime').text(d);
-          });
+    <script src="{% static 'js/stesta.js' %}"></script>
 
 
-      </script>
   </body>
 </html>
