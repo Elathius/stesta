@@ -3,6 +3,9 @@
 /* @import url(https://fonts.googleapis.com/css?family=Raleway); */
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 
+      .closebtn{
+        z-index: 1001;
+      }
 
       /* --Misc / Global CSS */
       a{
@@ -270,6 +273,9 @@
         @media screen and (max-height: 650px) {
         .thematicspacing{
           margin-top: 18vh;
+        }
+        .overlay-content{
+          top:10%;
         }
 
         }
