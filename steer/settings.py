@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from .secret_settings import SECRET_KEY,  SECRET_SMTP_PASSWORD, SECRET_SMTP_EMAIL
+#from .secret_settings import SECRET_KEY,  SECRET_SMTP_PASSWORD, SECRET_SMTP_EMAIL, SECRET_AWS_ACCESS_KEY_ID, SECRET_AWS_SECRET_ACCESS_KEY, SECRET_AWS_STORAGE_BUCKET_NAME, SECRET_DB_PASS, SECRET_DB_HOST, SECRET_DB_USER
+from .secret_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # Not actual secret key :)
 #SECRET_KEY = '()b-=f)h*i$7gl@lx%9u0s2zasdahjgf(a5c2pi&^kutk1ov3='
+SECRET_KEY = CUSTOM_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -85,10 +89,22 @@ WSGI_APPLICATION = 'steer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# Local sqlite database settings / remove postgresql and uncomment this
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'stesta_db',
+        'USER': SECRET_DB_USER,
+        'PASSWORD': SECRET_DB_PASS,
+        'HOST': SECRET_DB_HOST,
+        'POST' : '5432',
     }
 }
 
@@ -146,3 +162,19 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = SECRET_SMTP_EMAIL
 EMAIL_HOST_PASSWORD = SECRET_SMTP_PASSWORD
+
+
+#S3 BUCKETS CONFIG
+
+AWS_ACCESS_KEY_ID = SECRET_AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = SECRET_AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = SECRET_AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+AWS_S3_HOST = "s3.eu-central-1.amazonaws.com"
+AWS_S3_REGION_NAME="eu-central-1"
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
