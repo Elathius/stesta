@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-#from .secret_settings import SECRET_KEY,  SECRET_SMTP_PASSWORD, SECRET_SMTP_EMAIL, SECRET_AWS_ACCESS_KEY_ID, SECRET_AWS_SECRET_ACCESS_KEY, SECRET_AWS_STORAGE_BUCKET_NAME, SECRET_DB_PASS, SECRET_DB_HOST, SECRET_DB_USER
+
 from .secret_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

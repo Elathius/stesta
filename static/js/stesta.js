@@ -42,9 +42,9 @@ $(document).ready(function () {
     var parwidth = $('.progress-bar').parent().width();
     $("#taskspace .progress-bar").each(function () {
         var f = $(this).width() / parwidth * 100;
-        console.log("done: ", f);
+        
         $(this).width(0);
-        console.log(f + "%");
+        
         $(this).animate({
             width: f + "%",
         }, 1500);
@@ -52,8 +52,8 @@ $(document).ready(function () {
     $(".subcardoverlay").each(function () {
         var checked = $(this).find('.inputcountchecked').length;
         var nonchecked = $(this).find('.inputcount').length;
-        console.log(checked, "<-");
-        console.log(nonchecked + checked, "->");
+        
+        
         $(this).find('#inputcountresult').text(checked + "/" + (nonchecked + checked))
     });
 });
@@ -68,8 +68,8 @@ $("#taskspace .card-body").each(function () {
     var d = moment.duration(difference).format("d [days], h [hours], m [m], s [s]", {
         largest: 1
     });
-    console.log(d);
-    console.log("<---->");
+    
+    
     $(this).find('#deadlinetime').text(d);
 });
 $(".subcardoverlay #subcardheader").each(function () {
@@ -81,8 +81,8 @@ $(".subcardoverlay #subcardheader").each(function () {
     var d = moment.duration(difference).format("d [days], h [hours], m [m], s [s]", {
         largest: 1
     });
-    console.log(d);
-    console.log("^----^");
+    
+    
     $(this).find('#deadlinetime').text(d);
 });
 
