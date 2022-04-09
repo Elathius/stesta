@@ -11,6 +11,9 @@ main/templates/main/core10.html
 main/templates/main/core_template_old.html
 main/templates/main/core_aditya.html
 static/css/album.css
+stesta.log
+main/migrations
+start_server.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

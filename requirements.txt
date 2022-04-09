@@ -1,9 +1,11 @@
 antiorm==1.2.1
-asgiref==3.2.10
+asgiref==3.5.0
+backports.zoneinfo==0.2.1
 db==0.1.1
 db-sqlite3==0.0.1
-Django==3.0.8
+Django==4.0.3
 django-tinymce4-lite==1.8.0
-jsmin==2.2.2
+jsmin==3.0.1
+psycopg2-binary==2.9.3
 pytz==2020.1
 sqlparse==0.3.1
