@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'storages',
+    # 'storages',
 ]
 
 MIDDLEWARE = [
@@ -165,15 +165,15 @@ EMAIL_HOST_PASSWORD = SECRET_SMTP_PASSWORD
 
 #S3 BUCKETS CONFIG
 
-AWS_ACCESS_KEY_ID = SECRET_AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = SECRET_AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = SECRET_AWS_STORAGE_BUCKET_NAME
+# AWS_ACCESS_KEY_ID = SECRET_AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY = SECRET_AWS_SECRET_ACCESS_KEY
+# AWS_STORAGE_BUCKET_NAME = SECRET_AWS_STORAGE_BUCKET_NAME
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
 
-AWS_S3_HOST = "s3.eu-central-1.amazonaws.com"
-AWS_S3_REGION_NAME="eu-central-1"
+# AWS_S3_HOST = "s3.eu-central-1.amazonaws.com"
+# AWS_S3_REGION_NAME="eu-central-1"
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
